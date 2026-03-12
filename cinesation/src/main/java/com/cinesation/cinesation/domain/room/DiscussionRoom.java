@@ -31,6 +31,7 @@ public class DiscussionRoom {
     @Column
     private String status = "OPEN";
 
+
     // 생성자 (방을 처음 만들 때 사용)
     public DiscussionRoom(String title, String movieId) {
         this.title = title;
@@ -38,5 +39,10 @@ public class DiscussionRoom {
         this.createdAt = LocalDateTime.now();
         this.expires_at = this.createdAt.plusDays(7); // 7일간의 기록 컨셉!
         this.status = "OPEN";
+    }
+
+    // 비즈니스 로직 (엔티티 상태 변경)
+    public void closeRoom() {
+        this.status = "CLOSED";
     }
 }
